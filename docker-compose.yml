@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: toba44/frontend:latest
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+  backend:
+    image: toba44/backend:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=mysql://root:rootpassword@database:3306/mydatabase
+    networks:
+      - app-network
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
