@@ -1,0 +1,6 @@
+# Use the official MySQL image from Docker Hub
+FROM mysql:5.7
+
+# Set environment variables
+ENV MYSQL_ROOT_PASSWORD=rootpassword
+ENV MYSQL_DATABASE=mydatabase
