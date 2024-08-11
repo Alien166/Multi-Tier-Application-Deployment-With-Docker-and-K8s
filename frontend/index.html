@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Tier Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .message {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            color: #007BFF;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Multi-Tier Application</h1>
+        <div class="message">
+            <p>This is a simple multi-tier application with a frontend, backend, and database.</p>
+            <p>Check out the backend response:</p>
+            <div id="backend-message"></div>
+        </div>
+        <div class="links">
+            <a href="http://localhost:5000/api" target="_blank">View Backend API</a>
+        </div>
+    </div>
+
+    <script>
+        // Fetch backend message on page load
+        fetch('http://localhost:5000')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('backend-message').innerText = data;
+            })
+            .catch(error => {
+                document.getElementById('backend-message').innerText = 'Failed to fetch message from backend.';
+            });
+    </script>
+</body>
+</html>
